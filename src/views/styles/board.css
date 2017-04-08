@@ -1,0 +1,41 @@
+.cards{
+	position: absolute;
+	right: 20%;
+	left: 20%;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr ;
+	grid-gap: 10px;
+	margin: 10px;
+	justify-items: center;
+}
+
+
+
+@media screen and (max-width: 1250px) {
+	.cards{
+		right: 10%;
+		left: 10%;
+	}
+}
+@media screen and (max-width: 1000px) {
+	.cards{
+		right: 5%;
+		left: 5%;
+		grid-template-columns: 1fr 1fr 1fr ;
+
+	}
+}
+
+@media screen and (max-width: 780px) {
+	.cards{
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+
+
+@media screen and (max-width: 480px) {
+	.cards{
+		grid-template-columns: 1fr;
+	}
+}

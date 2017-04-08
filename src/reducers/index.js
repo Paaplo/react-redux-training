@@ -1,5 +1,5 @@
-import { combineReducers } from 'redux'
-import memory from './memoryReducer'
+import { combineReducers } from 'redux';
+import memory from './memoryReducer';
 
 const rootReducer = combineReducers({
     memory

@@ -1,0 +1,48 @@
+
+.flipper, .front, .back {
+	position: absolute;
+	top:0px;
+	border-radius: 25px;
+	height: 100%;
+	width: 100%;
+
+}
+.front {
+	background-size: cover;
+	background-repeat:no-repeat;
+	background-position: center center;
+	transform: rotateY(0deg);
+	background-color: #222;
+	border: 2px solid #fff;
+	z-index: 2;
+	backface-visibility: hidden;
+	color: #fff;
+	text-align: center;
+}
+
+.back {
+	background-repeat: no-repeat;
+	background-position: center center;
+	transform: rotateY(180deg);
+
+
+	background-color: #222;
+	backface-visibility: hidden;
+	line-height: 3em;
+}
+
+.card{
+	position: relative;
+	height: 250px;
+	width: 200px;
+}
+
+.flipper {
+	transform-style: preserve-3d;
+	transition: transform 1s;
+	perspective: 1000px;
+}
+
+.selected{
+	transform: rotateY(180deg);
+}
