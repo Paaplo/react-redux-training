@@ -11,10 +11,25 @@ const store = configureStore(persistedState);
 import App from './App';
 import './index.css';
 
+const render = (Component) => {
+	ReactDOM.render(
+	  <Provider store={store}>
+	      <App />
+	  </Provider>,
+	  document.getElementById('root')
+	);
+};
 
-ReactDOM.render(
-  <Provider store={store}>
-      <App />
-  </Provider>,
-  document.getElementById('root')
-);
+render(App);
+
+
+
+if (module.hot) {
+  module.hot.accept('./App', () => {
+    var NextApp = require('./App').default;
+    ReactDOM.render(
+      <NextApp />,
+      document.getElementById('root')
+    );
+  });
+}

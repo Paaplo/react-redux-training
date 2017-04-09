@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 
 export default class Title extends Component {
@@ -16,11 +17,18 @@ export default class Title extends Component {
 				</div>
 				<div className="title-item">
 					<div>{this.props.title}</div>
-					<div>{this.props.rounds}</div>
+					{this.props.board === 'game' ? 
+						<div>{this.props.rounds}</div>
+						: ''
+					}
 
 				</div>
 				<div className="title-item">
-					<Button bsStyle="primary" bsSize="large">
+					<Button 
+						bsStyle="primary" 
+						bsSize="large"
+						onClick={()=>this.props.showHighScores()}
+					>
 						Näytä tulokset
 					</Button>
 				</div>
@@ -30,5 +38,5 @@ export default class Title extends Component {
 }
 
 Title.propTypes = {
-  title: React.PropTypes.string
+  title: PropTypes.string
 };

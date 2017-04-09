@@ -8,11 +8,11 @@ export default class Card extends Component {
 		this.state = {loading: true}
 	}
 	handleImageLoaded(){
-    this.setState({ loading: false });
+    	this.setState({ loading: false });
 	}
-  render() {
-  	const card = this.props.card;
-      
+	render() {
+		const card = this.props.card;
+	    
 		let className = "";
 		if (card.selected) {
 		  className += " selected";
@@ -20,8 +20,8 @@ export default class Card extends Component {
 		if (card.found) {
 		  className += " found";
 		}
-    return (
-    	<div className="card" onClick={(e)=>this.props.cardSelected(card)}>
+	  return (
+	  	<div className="card" onClick={(e)=>this.props.cardSelected(card)}>
 	      <div className={'flipper '+className}>
 	          <div className="front">
 	          	{this.state.loading ? 
@@ -31,6 +31,6 @@ export default class Card extends Component {
 	          <img className="back" onLoad={this.handleImageLoaded.bind(this)} src={card.url} alt=""></img>
 	      </div>
 	     </div>
-    );
-  }
+	    );
+	}
 }

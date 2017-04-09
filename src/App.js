@@ -12,15 +12,16 @@ import Title from './views/Title'
 import * as memoryActions from './actions/memoryActions';
 
 class App extends Component {
-  componentDidMount(){
-    this.props.actions.getCards();
-  }
+
   render() {
     return (
-      <div className="App">
+      <div className="app">
         <Title 
           title={this.props.memory.title}
           rounds={this.props.memory.rounds}
+          restart={this.props.actions.restart}
+          board={this.props.memory.board}
+          showHighScores={this.props.actions.showHighScores}
         />
         <div className="board">
         {(() => {
@@ -28,8 +29,10 @@ class App extends Component {
               case "game":
                   return <Game />;
 
-              case "high-scores":
-                  return <HighScore />;
+              case "highscore":
+                  return <HighScore 
+                          results={this.props.memory.results}
+                          />;
 
               case "start":
               default:

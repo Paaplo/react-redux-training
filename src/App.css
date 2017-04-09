@@ -3,11 +3,6 @@
 }
 
 .title {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: var(--title-height);
     overflow: hidden;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr ;
@@ -24,9 +19,14 @@
 }
 
 .board {
-    position: absolute;
-    top:  var(--title-height);
-    left: 0;
-    height: calc(100% -  var(--title-height));
-    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-right: 15%;
+    margin-left: 15%;
+    height: 100vh;
+}
+
+.app{
+    background-color: #eee;
+    overflow: auto;
 }

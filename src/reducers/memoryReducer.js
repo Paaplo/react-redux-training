@@ -5,17 +5,18 @@ import {
 	START_GAME,
 	GET_CARDS_FULFILLED,
 	CLEAR_SELECTIONS,
-	MATCH_FOUND
+	MATCH_FOUND,
+  ALL_FOUND
 } from '../constants/';
 
 
 const initialState = {
-  rounds: 1,
-  guess1: {},
-  guess2: {},
+  rounds: 0,
+  guess1: null,
+  guess2: null,
   cards: [],
   board: 'start',
-  title: 'Aloita',
+  title: 'Anna nimi',
   name: '',
   results: []
 };
@@ -25,18 +26,18 @@ export default function memory(state = initialState, action) {
     case GET_CARDS_FULFILLED:
       return Object.assign({}, state, {
         cards: action.payload,
-        guess1: {},
-        guess2: {},
-        rounds: 1
+        guess1: null,
+        guess2: null,
+        rounds: 0
       });
     case SHOW_HIGH_SCORES:
       return Object.assign({}, state, {
-        board: 'high_scores',
+        board: 'highscore',
         title: 'Parhaat tulokset'
       });
     case START_GAME:
       return Object.assign({}, state, {
-      	rounds: 1,
+      	rounds: 0,
         board: 'game',
         title: 'Peli',
         name: action.payload.name
@@ -53,8 +54,8 @@ export default function memory(state = initialState, action) {
       });
     case CLEAR_SELECTIONS:
       return Object.assign({}, state, {
-        guess1: {},
-        guess2: {},
+        guess1: null,
+        guess2: null,
         rounds: state.rounds+1,
         cards: state.cards.map((card) => {
                     return !card.found ?
@@ -64,8 +65,8 @@ export default function memory(state = initialState, action) {
       });
     case MATCH_FOUND:
       return Object.assign({}, state, {
-        guess1: {},
-        guess2: {},
+        guess1: null,
+        guess2: null,
         rounds: state.rounds+1,
         cards: state.cards.map((card) => {
                     return action.payload.id1 === card.id || action.payload.id2 === card.id ?
@@ -75,12 +76,19 @@ export default function memory(state = initialState, action) {
       });
     case RESTART_GAME:
       return Object.assign({}, state, {
-        rounds: 1,
-        guess1: {},
-        guess2: {},
-        cards: action.payload,
-        board: 'game'
+        rounds: 0,
+        guess1: null,
+        guess2: null,
+        cards: [],
+        title: 'Anna nimi',
+        board: 'start'
       });
+    case ALL_FOUND:
+      return Object.assign({}, state, {
+        board: 'highscore',
+        title: 'Parhaat tulokset',
+        results: state.results.concat({name: state.name, result: state.rounds})
+      })
     default:
       return state;
   }
