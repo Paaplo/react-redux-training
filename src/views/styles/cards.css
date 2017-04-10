@@ -29,8 +29,6 @@
 	}
 }
 
-
-
 @media screen and (max-width: 480px) {
 	.cards{
 		grid-template-columns: 1fr;

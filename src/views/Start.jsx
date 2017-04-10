@@ -5,13 +5,17 @@ import { FormGroup, ControlLabel, FormControl, Button , Col} from 'react-bootstr
 
 import * as memoryActions from '../actions/memoryActions';
 
+/* 
+TODO: on button click action startGame()
+TODO: form input name to internal state
+*/
+
 class Start extends Component {
 	constructor(props){
 		super(props);
-		this.state = {name: ''}
 	}
 	nameChange(e){
-		this.setState({name: e.target.value})
+
 	}
 	render() {
 		return (
@@ -21,12 +25,13 @@ class Start extends Component {
 						<ControlLabel>Nimi</ControlLabel>
 						<FormControl 
 							type="text" 
-							onChange={(e)=> this.nameChange(e)}/>
-						<Button bsStyle="primary" 
-								bsSize="large"
-								className="center-block"
-								style={{marginTop: '10px'}}
-								onClick={()=>this.props.actions.startGame(this.state.name)}>Aloita</Button>
+						/>
+						<Button 
+							bsStyle="primary" 
+							bsSize="large"
+							className="center-block"
+							style={{marginTop: '10px'}}
+						>Aloita</Button>
 					</FormGroup>
 				</Col>
 			</div>

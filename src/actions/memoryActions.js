@@ -11,24 +11,21 @@ import {
 
 import { generateCards } from '../utils/helpers';
 
-export function flipCard(card) {
-  return {
-    type: FLIP_CARD,
-    payload: card
-  };
-}
+/*
+TODO: flipCard() action
+	returns action type FLIP_CARD payload card object
+*/
+
 export function restart() {
   return {
     type: RESTART_GAME
   };
 }
 
-export function startGame(name) {
-	return {
-		type: START_GAME,
-		payload: {name}
-	}
-}
+/* 
+TODO: startGame() action
+	returns action type START_GAME and payload name 
+*/
 
 export function getCards() {
 	 return dispatch => {
@@ -39,15 +36,10 @@ export function getCards() {
 	}
 }
 
-export function clearSelections() {
-	return (dispatch) => {
-		setTimeout (()=> {
-			dispatch({
-				type: CLEAR_SELECTIONS
-			})
-		}, 1500);
-	}
-}
+/*
+TODO: clearSelections() action
+	create a delayd action with setTimeout
+*/
 
 export function matchFound(card1, card2, cards) {
 	return dispatch => {

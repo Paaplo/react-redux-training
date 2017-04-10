@@ -6,7 +6,8 @@ export const generateCards = async () => {
   let response = await fetch('https://www.reddit.com/r/perfectloops/top.json?sort=top&t=year');
   // parsing
   let redditData = await response.json();
-  //let redditData;
+
+
   let imageUrls = parseUrls(redditData);
   for (let i = 0; i < NUMBER_OF_CARDS; i += 2) {
     cards.push({

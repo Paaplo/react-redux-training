@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 
 import * as memoryActions from '../actions/memoryActions';
 
-import Card from './Card';
 import './styles/cards.css';
 
 class Game extends Component {
@@ -13,40 +12,30 @@ class Game extends Component {
 	}
 	cardSelected(card){
 		const memory = this.props.memory;
-		// Logiikka: 
-		// 1. jos painetaan samaa korttia kuin on jo arvattu älä tee mitään
-		// 2. jos on jo 2 arvausta älä tee mitään
-		// 3. jos 1. tai 2. arvaus puuttuu etene
-		// 3.1  flippaa kortti
-		// 3.2  tarkista onko matchi ensimmäisen arvauksen kanssa
-		// 3.3  jos ei ole ja arvaus 1 on tallessa tyhjennä arvaukset
+		// TODO: 
+		// game logic: 
+		// 1. if card is guess1 or guess2 do nothing
+		// 2. if both guesses are in redux state do nothing
+		// 3. if either guess is not in redux store go forward
+		// 3.1  action flipCard()
+		// 3.2  if card.rel === guess1.id action matchFound()
+		// 3.3  if not and guess1 exists action clearSelections()
 
 		if( (memory.guess1 && memory.guess1.id === card.id)
 			|| (memory.guess2 && memory.guess2.id === card.id)){
 			//do nothing
 		}
-		else if(!memory.guess1 || !memory.guess2 ){
-			this.props.actions.flipCard(card);
-			if(memory.guess1 && memory.guess1.id === card.rel){
-				this.props.actions.matchFound(card, memory.guess1, memory.cards);
-			}
-			else if(memory.guess1){
-				this.props.actions.clearSelections();
-			}		
-		}
+
 	}
 	renderCards(){
 		const memory = this.props.memory;
 		if(memory && memory.cards.length){
-			return memory.cards.map((card, index)=>{
-				return ( 
-					<Card 
-						card={card} 
-						key={index} 
-						cardSelected={this.cardSelected.bind(this)}
-					/> 
-				)
-			})
+			/* 
+				TODO: 
+				map memory.cards 
+				return <Card 
+					proprties: card index cardSelected() />
+			*/
 		}
 		else{
 			return <div/>

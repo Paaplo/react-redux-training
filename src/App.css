@@ -14,10 +14,6 @@
     font-size:  calc(var(--title-height)/3);
 }
 
-.title-item{
-
-}
-
 .board {
     display: grid;
     grid-template-columns: 1fr;

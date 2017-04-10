@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import '../../node_modules/react-bootstrap-table/dist/react-bootstrap-table.min.css';
+
+
 export default class HighScore extends Component {
 	render() {
 		return (
